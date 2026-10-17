@@ -1,0 +1,59 @@
+[package]
+name = "dynamic-downloading-dashboard"
+version = "1.0.0"
+description = "A fast, free download manager that runs on your own computer."
+authors = ["Jasim Siddiqui"]
+license = "GPL-3.0-only"
+edition = "2021"
+default-run = "dynamic-downloading-dashboard"
+
+[lib]
+name = "ddd_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-notification = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time", "fs", "io-util", "process", "net"] }
+tokio-util = "0.7"
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "http2", "stream", "socks"] }
+futures-util = "0.3"
+bytes = "1"
+url = "2"
+percent-encoding = "2"
+parking_lot = "0.12"
+sha2 = "0.10"
+md-5 = "0.10"
+sha1 = "0.10"
+base64 = "0.22"
+hex = "0.4"
+aes = "0.8"
+cbc = { version = "0.1", features = ["std"] }
+m3u8-rs = "6"
+quick-xml = "0.37"
+zip = { version = "8", default-features = false, features = ["deflate"] }
+librqbit = { version = "9", default-features = false, features = ["rust-tls"] }
+suppaftp = { version = "8", features = ["tokio"] }
+winreg = "0.55"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_JobObjects", "Win32_Security", "Win32_System_Power", "Win32_System_DataExchange", "Win32_System_Memory", "Win32_System_Ole", "Win32_UI_WindowsAndMessaging", "Win32_System_LibraryLoader", "Win32_System_Threading", "Win32_Storage_FileSystem"] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = 3
+strip = true

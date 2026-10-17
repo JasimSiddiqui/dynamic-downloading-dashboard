@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Rust / Tauri build artifacts
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# Staged release uploads
+release-assets/
+
+# Environment & secrets
+.env
+.env.*
+*.token
+*.secret
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / tooling
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*

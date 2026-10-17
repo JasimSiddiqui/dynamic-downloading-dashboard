@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-downloading-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A fast, free download manager that runs on your own computer.",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri",
+    "icons": "node scripts/gen-icon.mjs && tauri icon app-icon.png",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "bench": "node scripts/bench-server.mjs",
+    "package": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2",
+    "@tauri-apps/cli": "^2"
+  }
+}
